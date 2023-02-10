@@ -1,8 +1,11 @@
 import {
-  EnvelopeIcon, EyeIcon, EyeSlashIcon, KeyIcon
-} from '@heroicons/react/24/outline';
-import cn from 'classnames';
-import { forwardRef, useImperativeHandle, useRef, useState } from 'react';
+  EnvelopeIcon,
+  EyeIcon,
+  EyeSlashIcon,
+  KeyIcon,
+} from "@heroicons/react/24/outline";
+import cn from "classnames";
+import { forwardRef, useImperativeHandle, useRef, useState } from "react";
 
 export const AuthField = forwardRef<
   {
@@ -10,7 +13,7 @@ export const AuthField = forwardRef<
   },
   {
     id?: string;
-    type: 'email' | 'password';
+    type: "email" | "password";
     label: string;
     onChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
     onBlur?: (event: React.FocusEvent<HTMLInputElement>) => void;
@@ -29,10 +32,10 @@ export const AuthField = forwardRef<
     showError = false,
     errorMessage,
   },
-  ref
+  ref,
 ) {
   const inputRef = useRef<HTMLInputElement>(null);
-  const [inputType, setInputType] = useState<typeof type | 'text'>(type);
+  const [inputType, setInputType] = useState<typeof type | "text">(type);
 
   const focusInput = () => {
     inputRef.current!.focus();
@@ -44,14 +47,14 @@ export const AuthField = forwardRef<
     };
   });
 
-  const PrimaryIcon = type === 'email' ? EnvelopeIcon : KeyIcon;
+  const PrimaryIcon = type === "email" ? EnvelopeIcon : KeyIcon;
 
   const PasswordVisibilityStatusIcon =
-    inputType === 'password' ? EyeSlashIcon : EyeIcon;
+    inputType === "password" ? EyeSlashIcon : EyeIcon;
 
   const togglePasswordVisibility = () => {
     setInputType((prevState) =>
-      prevState === 'password' ? 'text' : 'password'
+      prevState === "password" ? "text" : "password",
     );
   };
 
@@ -75,13 +78,13 @@ export const AuthField = forwardRef<
           placeholder={placeholder}
           required
           className={cn(
-            'pl-10 pr-10 px-3 py-2 block w-full appearance-none shadow-sm rounded-md border focus:outline-none sm:text-sm transition-all ease-in-out duration-200',
+            "pl-10 pr-10 px-3 py-2 block w-full appearance-none shadow-sm rounded-md border focus:outline-none sm:text-sm transition-all ease-in-out duration-200",
             showError
-              ? 'border-red-300 text-red-900 placeholder-red-300 focus:border-red-500 focus:ring-red-500'
-              : 'border-gray-300 placeholder-gray-400  focus:border-blue-500 focus:ring-blue-500'
+              ? "border-red-300 text-red-900 placeholder-red-300 focus:border-red-500 focus:ring-red-500"
+              : "border-gray-300 placeholder-gray-400  focus:border-blue-500 focus:ring-blue-500",
           )}
         />
-        {inputType !== 'email' && (
+        {inputType !== "email" && (
           <div className="absolute inset-y-0 right-0 flex items-center pr-3">
             <PasswordVisibilityStatusIcon
               className="h-5 w-5 text-gray-400 cursor-pointer"

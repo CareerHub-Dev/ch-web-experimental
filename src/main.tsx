@@ -1,28 +1,19 @@
-import React from "react";
+import { StrictMode } from "react";
 import ReactDOM from "react-dom/client";
+import { SessionContextProvider } from "./context/SessionContext";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import { LandingPage } from "./pages/LandingPage";
+import { RouterProvider } from "react-router-dom";
+import { router } from "./router";
 import "./index.scss";
-import { LoginPage } from "./pages/LoginPage";
 
 const queryClient = new QueryClient();
 
-const router = createBrowserRouter([
-  {
-    path: "/",
-    element: <LandingPage />,
-  },
-  {
-    path: "login",
-    element: <LoginPage />,
-  },
-]);
-
 ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
-  <React.StrictMode>
+  <StrictMode>
     <QueryClientProvider client={queryClient}>
-      <RouterProvider router={router} />
+      <SessionContextProvider>
+        <RouterProvider router={router} />
+      </SessionContextProvider>
     </QueryClientProvider>
-  </React.StrictMode>,
+  </StrictMode>,
 );

@@ -10,6 +10,7 @@ specifiers:
   '@vitejs/plugin-react-swc': ^3.1.0
   autoprefixer: ^10.4.13
   classnames: ^2.3.2
+  ky: ^0.33.2
   postcss: ^8.4.21
   react: ^18.2.0
   react-dom: ^18.2.0
@@ -20,6 +21,7 @@ specifiers:
   typescript: ^4.9.5
   usehooks-ts: ^2.9.1
   vite: ^4.1.1
+  vite-plugin-chunk-split: ^0.4.7
   vite-tsconfig-paths: ^4.0.5
   zod: ^3.20.2
   zustand: ^4.3.2
@@ -29,6 +31,7 @@ dependencies:
   '@heroicons/react': 2.0.14_react@18.2.0
   '@tanstack/react-query': 4.24.4_biqbaboplfbrettd7655fr4n2y
   classnames: 2.3.2
+  ky: 0.33.2
   react: 18.2.0
   react-dom: 18.2.0_react@18.2.0
   react-router-dom: 6.8.0_biqbaboplfbrettd7655fr4n2y
@@ -48,6 +51,7 @@ devDependencies:
   tailwindcss: 3.2.4_postcss@8.4.21
   typescript: 4.9.5
   vite: 4.1.1_sass@1.58.0
+  vite-plugin-chunk-split: 0.4.7_vite@4.1.1
   vite-tsconfig-paths: 4.0.5_typescript@4.9.5
 
 packages:
@@ -620,6 +624,10 @@ packages:
     resolution: {integrity: sha512-Vp3CVhmYpgf4iXNKAucoQUDcCrBQX3XLBtwgFqP9BUXuucgvAV9zWp1kYU7LL9j4++s9O+12cb3wMtN4SJy6UQ==}
     dev: true
 
+  /es-module-lexer/1.1.1:
+    resolution: {integrity: sha512-n3ruqU8Te7I5prBd6d0darM8ajFuVNhLWvgo04hN7goWSaSrxe7ENOZitac7akN0A2o+8fMomBDsNPvW/eE3CQ==}
+    dev: true
+
   /esbuild/0.16.17:
     resolution: {integrity: sha512-G8LEkV0XzDMNwXKgM0Jwu3nY3lSTwSGY6XbxM9cr9+s0T/qSV1q1JVPBGzm3dcjhCic9+emZDmMffkwgPeOeLg==}
     engines: {node: '>=12'}
@@ -750,6 +758,11 @@ packages:
     resolution: {integrity: sha512-RdJUflcE3cUzKiMqQgsCu06FPu9UdIJO0beYbPhHN4k6apgJtifcoCtT9bcxOpYBtpD2kCM6Sbzg4CausW/PKQ==}
     dev: false
 
+  /ky/0.33.2:
+    resolution: {integrity: sha512-f6oS2rKUcPu5FzdqCDbFpmzis/JlqFZw8uIHm/jf8Kc3vtnW+VDhuashOAKyBZv8bFiZFZUMNxTC0JtahEvujA==}
+    engines: {node: '>=14.16'}
+    dev: false
+
   /lilconfig/2.0.6:
     resolution: {integrity: sha512-9JROoBW7pobfsx+Sq2JsASvCo6Pfo6WWoUW79HuB1BCoBXD4PLWJPqDF6fNj67pqBYTbAHkE57M1kS/+L1neOg==}
     engines: {node: '>=10'}
@@ -761,6 +774,13 @@ packages:
     dependencies:
       js-tokens: 4.0.0
     dev: false
+
+  /magic-string/0.26.7:
+    resolution: {integrity: sha512-hX9XH3ziStPoPhJxLq1syWuZMxbDvGNbVchfrdCtanC7D13888bMFow61x8axrx+GfHLtVeAx2kxL7tTGRl+Ow==}
+    engines: {node: '>=12'}
+    dependencies:
+      sourcemap-codec: 1.4.8
+    dev: true
 
   /merge2/1.4.1:
     resolution: {integrity: sha512-8q7VEgMJW4J8tcfVPy8g09NcQwZdbwFEqhe/WZkoIzjn/3TGDwtOCYtXGxA3O8tPzpczCCDgv+P2P5y00ZJOOg==}
@@ -1018,6 +1038,11 @@ packages:
     resolution: {integrity: sha512-R0XvVJ9WusLiqTCEiGCmICCMplcCkIwwR11mOSD9CR5u+IXYdiseeEuXCVAjS54zqwkLcPNnmU4OeJ6tUrWhDw==}
     engines: {node: '>=0.10.0'}
 
+  /sourcemap-codec/1.4.8:
+    resolution: {integrity: sha512-9NykojV5Uih4lgo5So5dtw+f0JgJX30KCNI8gwhz2J9A15wD0Ml6tjHKwf6fTSa6fAdVBdZeNOs9eJ71qCk8vA==}
+    deprecated: Please use @jridgewell/sourcemap-codec instead
+    dev: true
+
   /supports-preserve-symlinks-flag/1.0.0:
     resolution: {integrity: sha512-ot0WnXS9fgdkgIcePe6RHNk1WA8+muPa6cSjeR3V8K27q9BB1rTE3R1p7Hv0z1ZyAc8s6Vvv8DIyWf681MAt0w==}
     engines: {node: '>= 0.4'}
@@ -1114,6 +1139,16 @@ packages:
 
   /util-deprecate/1.0.2:
     resolution: {integrity: sha512-EPD5q1uXyFxJpCrLnCc1nHnq3gOa6DZBocAIiI2TaSCA7VCJ1UJDMagCzIkXNsUYfD1daK//LTEQ8xiIbrHtcw==}
+    dev: true
+
+  /vite-plugin-chunk-split/0.4.7_vite@4.1.1:
+    resolution: {integrity: sha512-BGPMTxlC6Z+VNY1t/51F1ablkt4UQqdEPvAmCKRBsEPIpKAlW3sioQwK4klS14ievsGNaeALAKdko7n3oPJ8BQ==}
+    peerDependencies:
+      vite: ^3.1.0
+    dependencies:
+      es-module-lexer: 1.1.1
+      magic-string: 0.26.7
+      vite: 4.1.1_sass@1.58.0
     dev: true
 
   /vite-tsconfig-paths/4.0.5_typescript@4.9.5:
